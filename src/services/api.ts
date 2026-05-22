@@ -1,11 +1,11 @@
-const BASE_URL = 'http://localhost:3000';
+import { env } from '@/env'
 
 export async function api<T>(
   endpoint: string,
   options?: RequestInit
 ): Promise<T> {
   const response = await fetch(
-    `${BASE_URL}${endpoint}`,
+    `${env.VITE_API_BASE_URL}${endpoint}`,
     {
       headers: {
         "Content-Type": "application/json",
