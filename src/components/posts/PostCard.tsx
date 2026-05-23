@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
 import { HugeiconsIcon } from "@hugeicons/react";
 import { UserIcon, DateTimeIcon, ArrowRight04Icon } from "@hugeicons/core-free-icons";

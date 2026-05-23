@@ -32,7 +32,7 @@ export const PostDetails = () => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <article className="prose prose-neutral dark:prose-invert mx-auto max-w-3xl">
+      <article className="prose prose-neutral dark:prose-invert mx-auto max-w-3xl mt-10 mb-10">
         <h1 className="font-heading text-3xl font-semibold tracking-wider uppercase">
           {post.title}
         </h1>

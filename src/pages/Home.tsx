@@ -1,5 +1,5 @@
 import { PostList } from "@/components/posts/PostList"
-import { Search } from '@/components/layout/header/Search'
+import { Search } from '@/components/layout/Search'
 
 const headingStyle = "flex items-center gap-2 font-semibold text-5xl justify-center"
 

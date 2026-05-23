@@ -6,7 +6,7 @@ import {
 import { Home } from "@/pages/Home";
 import { Layout } from "@/components/layout/Layout";
 import { PostDetails } from "@/pages/PostDetails";
-// import { Login } from "../pages/Login";
+import { Login } from "../pages/Login";
 // import { Admin } from "../pages/Admin";
 // import { CreatePost } from "../pages/CreatePost";
 // import { EditPost } from "../pages/EditPost";
@@ -35,6 +35,15 @@ export function AppRoutes() {
         element={
           <Layout>
             <PostDetails />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/login"
+        element={
+          <Layout>
+            <Login />
           </Layout>
         }
       />
