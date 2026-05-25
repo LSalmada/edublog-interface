@@ -1,18 +1,21 @@
 # Edublog — Front-end
 
-Aplicação web desenvolvida em React para publicação e leitura de conteúdos sobre tecnologia e programação. O sistema consome uma API REST e fornece funcionalidades para docentes e estudantes.
+Aplicação web desenvolvida em React para publicação de posts. Desenvolvida como parte do Tech Challenge —
+Fase 3 da pós-graduação em Arquitetura de Software.
 
 ## Capturas de tela
+
 ### Home
+
 <img width="1505" height="795" alt="image" src="https://github.com/user-attachments/assets/708b33b7-0ef1-410c-9a2d-5bdf6ee6c664" />
 
 ### Admin
+
 <img width="1508" height="795" alt="image" src="https://github.com/user-attachments/assets/e0459b35-cf57-4a7d-94fa-09a8f956fbcb" />
 
 ### Form
+
 <img width="1508" height="789" alt="image" src="https://github.com/user-attachments/assets/ce0fdd53-a3e0-47d7-a17a-fcf62dfb5158" />
-
-
 
 ---
 
@@ -31,6 +34,10 @@ Aplicação web desenvolvida em React para publicação e leitura de conteúdos 
 - Editar postagens
 - Excluir postagens
 - Gerenciar posts em painel administrativo
+
+senha admin
+email: teacher@edublog.dev
+senha: teacher123
 
 ---
 
@@ -199,7 +206,6 @@ no builder remoto do Fly a partir do `Dockerfile`.
    ```
 
    No repositório → **Settings → Secrets and variables → Actions**:
-
    - Secret `FLY_API_TOKEN` = valor retornado pelo comando acima.
    - (Opcional) Variable `VITE_API_BASE_URL` se quiser sobrescrever o default
      `https://edublog-api.fly.dev`.
