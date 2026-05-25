@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { HugeiconsIcon } from "@hugeicons/react";
 import { PlusSignIcon } from "@hugeicons/core-free-icons";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -13,9 +14,11 @@ export const Header = () => {
           Gerencie todos os posts, incluindo rascunhos.
         </h1>
       </div>
-      <Button>
-        <HugeiconsIcon icon={PlusSignIcon} />
-        Novo Post
+      <Button asChild>
+        <Link to="/create-post">
+          <HugeiconsIcon icon={PlusSignIcon} />
+          Novo Post
+        </Link>
       </Button>
     </header>
   )

@@ -29,11 +29,11 @@ export const Header = () => {
           {user ? (
             <>
               <span className="text-sm text-muted-foreground">{user.email}</span>
-              <Button size="sm" variant="outline">
+              <Button size="sm" variant="outline" className="hover:text-primary">
                 <HugeiconsIcon icon={ManagerIcon} />
-                <Link to={`/admin`}>Admin</Link>
+                <Link to={`/admin`} >Admin</Link>
               </Button>
-              <Button size="sm" variant="outline" onClick={handleLogout}>
+              <Button size="sm" variant="outline" onClick={handleLogout} className="hover:text-primary">
                 <HugeiconsIcon icon={Logout02Icon} />
                 Sair
               </Button>

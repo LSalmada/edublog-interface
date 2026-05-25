@@ -8,9 +8,8 @@ import { Layout } from "@/components/layout/Layout";
 import { PostDetails } from "@/pages/PostDetails";
 import { Login } from "@/pages/Login";
 import { Admin } from "@/pages/Admin";
-// import { CreatePost } from "../pages/CreatePost";
-// import { EditPost } from "../pages/EditPost";
-// import { PostDetails } from "../pages/PostDetails";
+import { CreatePost } from "@/pages/CreatePost";
+import { EditPost } from "@/pages/EditPost";
 // import { NotFound } from "../pages/NotFound";
 
 import { ProtectedRoute } from "./ProtectedRoute";
@@ -18,8 +17,6 @@ import { ProtectedRoute } from "./ProtectedRoute";
 export function AppRoutes() {
   return (
     <Routes>
-
-      {/* Públicas */}
 
       <Route
         path="/"
@@ -45,6 +42,28 @@ export function AppRoutes() {
           <Layout>
             <Login />
           </Layout>
+        }
+      />
+
+      <Route
+        path="/admin/post/:id"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <EditPost />
+            </Layout>
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/create-post"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <CreatePost />
+            </Layout>
+          </ProtectedRoute>
         }
       />
 

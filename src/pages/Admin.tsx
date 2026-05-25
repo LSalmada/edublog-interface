@@ -7,13 +7,15 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-
+import { Link } from "react-router-dom"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
 import { Header } from "./admin/Header"
 import { DeleteDialog } from "./admin/DeleteDialog";
 import { useAdminPosts } from "@/hooks/usePosts"
+import { HugeiconsIcon } from "@hugeicons/react"
+import { Edit02Icon } from "@hugeicons/core-free-icons"
 
 export const Admin = () => {
   const { posts, loading, error, refreshPosts } = useAdminPosts()
@@ -52,7 +54,9 @@ export const Admin = () => {
             {currentPosts.map((post) => (
               <TableRow key={post.id}>
                 <TableCell className="font-medium">
-                  {post.title}
+                  <Link to={`/admin/post/${post.id}`} className="hover:text-primary">
+                    {post.title}
+                  </Link>
                 </TableCell>
 
                 <TableCell className="font-medium">
@@ -67,12 +71,15 @@ export const Admin = () => {
                   {new Date(post.createdAt).toLocaleDateString("pt-BR")}
                 </TableCell>
 
-                <TableCell className="font-medium text-right">
+                <TableCell className="flex flex-row justify-end gap-4">
                   <DeleteDialog
                     id={post.id.toString()}
                     title={post.title}
                     onDeleted={refreshPosts}
                   />
+                  <Link to={`/admin/post/${post.id}`} className="hover:text-primary">
+                    <HugeiconsIcon icon={Edit02Icon} />
+                  </Link>
                 </TableCell>
               </TableRow>
             ))}

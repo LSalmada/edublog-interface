@@ -1,5 +1,5 @@
 import { api } from "./api";
-import type { Post } from "../types/post";
+import type { Post, PostInput } from "../types/post";
 
 export function getPosts(): Promise<Post[]> {
   return api("/posts");
@@ -13,14 +13,14 @@ export function getPostById(id: string): Promise<Post> {
   return api(`/posts/${id}`);
 }
 
-export function createPost(data: Post): Promise<Post> {
+export function createPost(data: PostInput): Promise<Post> {
   return api("/posts", {
     method: "POST",
     body: JSON.stringify(data),
   });
 }
 
-export function updatePost(id: string, data: Post): Promise<Post> {
+export function updatePost(id: string, data: PostInput): Promise<Post> {
   return api(`/posts/${id}`, {
     method: "PUT",
     body: JSON.stringify(data),

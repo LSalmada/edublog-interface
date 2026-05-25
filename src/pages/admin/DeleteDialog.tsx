@@ -15,6 +15,7 @@ import { Delete02Icon } from "@hugeicons/core-free-icons"
 import { Button } from "@/components/ui/button"
 
 import { deletePost } from "@/services/posts"
+import { toast } from "sonner"
 
 type Props = {
   id: string
@@ -35,6 +36,7 @@ export function DeleteDialog({ id, title, onDeleted }: Props) {
       await deletePost(id)
 
       setOpen(false)
+      toast.success("Postagem excluída com sucesso!")
       onDeleted?.()
     } catch (err) {
       setError(
@@ -49,14 +51,14 @@ export function DeleteDialog({ id, title, onDeleted }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger>
+      <DialogTrigger className="hover:text-primary">
         <HugeiconsIcon icon={Delete02Icon} />
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Excluir post?</DialogTitle>
           <DialogDescription className="mt-5">
-            Esta ação não pode ser desfeita. O post "<strong>{title}</strong>" será permanentemente removido.
+            Esta ação não pode ser desfeita. O post "<strong className="font-medium text-foreground">{title}</strong>" será permanentemente removido.
           </DialogDescription>
         </DialogHeader>
 

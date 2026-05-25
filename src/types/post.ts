@@ -7,3 +7,5 @@ export interface Post {
   updatedAt: string;
   isPublished: boolean;
 }
+
+export type PostInput = Pick<Post, "title" | "content" | "author" | "isPublished">
