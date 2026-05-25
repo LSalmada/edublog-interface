@@ -35,6 +35,9 @@ export const PostDetails = () => {
       <article className="prose prose-neutral dark:prose-invert mx-auto max-w-3xl mt-10 mb-10">
         <h1 className="font-heading text-3xl font-semibold tracking-wider uppercase">
           {post.title}
+          <h2 className="text-sm text-muted-foreground text-left normal-case">
+            {post.author} - {new Date(post.createdAt).toLocaleDateString('pt-BR')}
+          </h2>
         </h1>
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {post.content}
