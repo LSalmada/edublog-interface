@@ -1,0 +1,34 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-https://edublog-api.fly.dev}
+    image: edublog-interface:latest
+    container_name: edublog-interface
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # Dev server with HMR.
+  # Run with: docker compose up dev
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: edublog-interface-dev:latest
+    container_name: edublog-interface-dev
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_BASE_URL: ${VITE_API_BASE_URL:-https://edublog-api.fly.dev}
+    volumes:
+      - .:/app
+      - /app/node_modules
+    profiles: ["dev"]
