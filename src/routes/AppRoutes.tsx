@@ -6,14 +6,14 @@ import {
 import { Home } from "@/pages/Home";
 import { Layout } from "@/components/layout/Layout";
 import { PostDetails } from "@/pages/PostDetails";
-import { Login } from "../pages/Login";
-// import { Admin } from "../pages/Admin";
+import { Login } from "@/pages/Login";
+import { Admin } from "@/pages/Admin";
 // import { CreatePost } from "../pages/CreatePost";
 // import { EditPost } from "../pages/EditPost";
 // import { PostDetails } from "../pages/PostDetails";
 // import { NotFound } from "../pages/NotFound";
 
-// import { PrivateRoute } from "./PrivateRoute";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 export function AppRoutes() {
   return (
@@ -45,6 +45,17 @@ export function AppRoutes() {
           <Layout>
             <Login />
           </Layout>
+        }
+      />
+
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <Layout>
+              <Admin />
+            </Layout>
+          </ProtectedRoute>
         }
       />
     </Routes>

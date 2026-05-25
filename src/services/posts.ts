@@ -5,6 +5,10 @@ export function getPosts(): Promise<Post[]> {
   return api("/posts");
 }
 
+export function getPostsAdmin(): Promise<Post[]> {
+  return api("/admin/posts");
+}
+
 export function getPostById(id: string): Promise<Post> {
   return api(`/posts/${id}`);
 }
