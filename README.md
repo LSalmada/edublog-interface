@@ -30,8 +30,9 @@ Aplicação web desenvolvida em React para publicação e leitura de conteúdos 
 - Tailwind CSS + shadcn/ui
 - React Markdown
 - Context API
-- Docker
+- Docker + Nginx
 - GitHub Actions
+- Fly.io (hospedagem)
 
 ---
 
@@ -158,14 +159,64 @@ Endpoints utilizados:
 
 ---
 
+## Deploy (Fly.io)
+
+A aplicação é hospedada no [Fly.io](https://fly.io) em
+`https://edublog-interface.fly.dev` e usa a mesma região do back-end (`gru` —
+São Paulo). A configuração mora no `fly.toml` da raiz e a imagem é construída
+no builder remoto do Fly a partir do `Dockerfile`.
+
+### Setup inicial (uma única vez)
+
+1. Instale e autentique-se no [flyctl](https://fly.io/docs/flyctl/install/):
+
+   ```bash
+   fly auth login
+   ```
+
+2. Crie o app no Fly.io (o nome deve bater com `app` no `fly.toml`):
+
+   ```bash
+   fly apps create edublog-interface
+   ```
+
+3. Gere um token de deploy e cadastre-o como secret no GitHub:
+
+   ```bash
+   fly tokens create deploy -x 8760h
+   ```
+
+   No repositório → **Settings → Secrets and variables → Actions**:
+
+   - Secret `FLY_API_TOKEN` = valor retornado pelo comando acima.
+   - (Opcional) Variable `VITE_API_BASE_URL` se quiser sobrescrever o default
+     `https://edublog-api.fly.dev`.
+
+### Deploy manual
+
+```bash
+fly deploy
+```
+
+O `flyctl` lê o `fly.toml`, envia o build pro builder remoto, gera a imagem e
+publica uma nova versão.
+
+### Deploy automático
+
+Qualquer push na branch `main` que passe no pipeline do CI dispara o deploy.
+
+---
+
 ## CI/CD
 
-Pipeline automatizada com GitHub Actions:
+Pipeline automatizada com GitHub Actions (`.github/workflows/ci.yml`):
 
-- Lint
-- Typecheck
-- Build
-- Docker
+- **Em PR para `main`** — apenas valida o código:
+  - Lint
+  - Typecheck
+  - Build
+- **Em push para `main`** — além das validações, faz o deploy no Fly.io
+  usando `flyctl deploy --remote-only`.
 
 ---
 
