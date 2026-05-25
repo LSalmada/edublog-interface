@@ -35,9 +35,9 @@ Fase 3 da pós-graduação em Arquitetura de Software.
 - Excluir postagens
 - Gerenciar posts em painel administrativo
 
-senha admin
-email: teacher@edublog.dev
-senha: teacher123
+### Credenciais de acesso para testes
+
+**Email:** `teacher@edublog.dev` **Senha:** `teacher123`
 
 ---
 
@@ -243,6 +243,8 @@ Pipeline automatizada com GitHub Actions (`.github/workflows/ci.yml`):
 Durante o desenvolvimento alguns desafios foram enfrentados:
 
 - Implementação da autenticação via JWT
+- Ajuste no backend
+- Problema de CORS, a acão de delete não estava sendo permitida
 - Integração entre React e API REST
 - Responsividade da interface
 - Implementação do editor Markdown
